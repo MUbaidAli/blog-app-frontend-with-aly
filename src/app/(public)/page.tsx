@@ -1,16 +1,20 @@
 // "use client"
 
 import { PostCard } from "@/components/ui/postCard";
+import { getCurrentUser } from "@/lib/auth";
 import userService, { User } from "@/services/user";
 import { LoginTypes } from "@/types/authTypes";
 import Image from "next/image";
 // import { useEffect, useState } from "react";
 
-export default function Home() {
+
+export default async  function Home() {
   // const [user,setUser] = useState<User | null>(null)
   // const [loading ,setloading] = useState<boolean>(false)
 
+  const user  = await getCurrentUser()
 
+  console.log(user)
   // useEffect(()=>{
 
   //     async function getMe(){

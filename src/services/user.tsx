@@ -2,6 +2,7 @@ import axios from "@/config/axios";
 import { ApiResponse } from "@/types/apiResponse";
 
 
+
 export interface User {
     id:string,
     username:string,
@@ -34,8 +35,14 @@ const userService = {
            return data 
         },
         
-        getMe : async () : Promise<User> =>{
-            const {data} = await axios.get("/me" ,{withCredentials:true})
+        getMe : async (cookieHeader:unknown) : Promise<User> =>{
+            const {data} = await axios.get("/me" ,{withCredentials:true
+             ,
+             headers:{
+                cookie:cookieHeader
+            }   
+
+            })
             return data;
 
         },
