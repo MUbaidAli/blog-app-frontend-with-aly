@@ -204,7 +204,7 @@ const MobileToolbarContent = ({
   </>
 )
 
-export function SimpleEditor() {
+export function SimpleEditor({handleChange}) {
   const isMobile = useIsBreakpoint()
   const { height } = useWindowSize()
   const [mobileView, setMobileView] = useState<"main" | "highlighter" | "link">(
@@ -257,7 +257,9 @@ export function SimpleEditor() {
     ],
     content:"hello",
     onUpdate:({editor}) =>{
-      console.log(editor.getHTML())
+      handleChange( {target: {name: "content", value: editor.getHTML()}})
+
+      // console.log(editor.getHTML())
     }
   })
 
